@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" href="/userstyles.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Users Management</h1>
+    </header>
+
+    <!-- Form to add a new user -->
+    <section class="form-section">
+        <h2>Add a New User</h2>
+        <form action="/users" method="post" th:object="${user}" class="user-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" th:field="*{username}" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" th:field="*{email}" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" th:field="*{password}" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="btn-primary">Add User</button>
+        </form>
+    </section>
+
+    <!-- List of all users -->
+    <section class="user-list-section">
+        <h2>User List</h2>
+        <table class="user-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Iterate over users and display them -->
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}">1</td>
+                <td th:text="${user.username}">Sample User</td>
+                <td th:text="${user.email}">user@example.com</td>
+                <td>
+                    <!-- Form to delete a user -->
+                    <form action="#" method="post" th:action="@{/users/{id}(id=${user.id})}">
+                        <button type="submit" class="btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+</body>
+</html>

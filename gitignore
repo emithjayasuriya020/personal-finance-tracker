@@ -1,0 +1,71 @@
+# ============================
+# Compiled & Build Output
+# ============================
+build/
+out/
+*.class
+*.jar
+*.war
+*.ear
+
+# ============================
+# Gradle
+# ============================
+.gradle/
+gradle-app.setting
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# ============================
+# Spring Boot
+# ============================
+target/
+*.log
+spring.log
+
+# ============================
+# Application Config (sensitive)
+# ============================
+src/main/resources/application-local.properties
+src/main/resources/application-secret.properties
+
+# ============================
+# IntelliJ IDEA
+# ============================
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea/dataSources/
+.idea/dataSources.local.xml
+
+# ============================
+# Eclipse / STS
+# ============================
+.classpath
+.project
+.settings/
+.springBeans
+
+# ============================
+# VS Code
+# ============================
+.vscode/
+
+# ============================
+# macOS
+# ============================
+.DS_Store
+__MACOSX/
+
+# ============================
+# Windows
+# ============================
+Thumbs.db
+desktop.ini
+
+# ============================
+# Environment
+# ============================
+.env
+*.env

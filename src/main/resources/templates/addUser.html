@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add User</title>
+  <link rel="stylesheet" href="/userstyles.css">
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Add a New User</h1>
+  </header>
+
+  <section class="form-section">
+    <form action="/users/add" method="post" th:object="${user}" class="user-form">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" th:field="*{username}" placeholder="Enter username" required>
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" placeholder="Enter email" required>
+        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="*{password}" placeholder="Enter password" required>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></div>
+      </div>
+
+      <button type="submit" class="btn-primary">Add User</button>
+    </form>
+
+    <div class="link">
+      <a href="/users/list" class="btn-secondary">View User List</a>
+      <a href="/users/login" class="btn-secondary">Go to Login</a>
+    </div>
+  </section>
+</div>
+</body>
+</html>

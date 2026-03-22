@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <aside class="sidebar">
+        <div class="logo">
+            <h2>TrueFinance</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/dashboard" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/transactions/new"><i class="fas fa-exchange-alt"></i> New Transaction</a></li>
+                <li><a href="/categories"><i class="fas fa-list"></i> Categories</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            <img src="/profile.jpg" alt="User Profile">
+            <p>Welcome, User</p>
+            <br>
+            <button class="view-btn" onclick="location.href='/users/login'">LogOut</button>
+        </div>
+    </aside>
+    <main class="content">
+        <header class="content-header">
+            <h1>Dashboard</h1>
+            <nav class="content-nav">
+                <a href="/dashboard" class="active">Home</a>
+                <a href="/transactions/new">New Transaction</a>
+                <a href="/categories">Categories</a>
+            </nav>
+        </header>
+        <section class="overview">
+            <div class="income-expenses">
+                <span>Total Income: <strong th:text="${totalIncome}">$0</strong></span>
+                <span>Total Expenses: <strong th:text="${totalExpenses}">$0</strong></span>
+            </div>
+        </section>
+        <section class="recent-transactions">
+            <h2>Recent Transactions</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="transaction : ${recentTransactions}">
+                    <td th:text="${transaction.transactionDate}">2023-10-01</td>
+                    <td th:text="${transaction.category.name}">Groceries</td>
+                    <td th:text="${transaction.description}">Supermarket purchase</td>
+                    <td th:text="${transaction.amount}">$150.00</td>
+                    <td><button class="view-btn" onclick="location.href='/transactions'">View</button></td>
+                </tr>
+                </tbody>
+            </table>
+            <button onclick="location.href='/categories'" class="category-btn">Go to Categories</button>
+        </section>
+    </main>
+</div>
+</body>
+</html>

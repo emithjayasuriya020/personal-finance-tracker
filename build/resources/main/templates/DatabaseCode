@@ -1,0 +1,22 @@
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE categories (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    type ENUM('INCOME', 'EXPENSE') NOT NULL
+);
+
+CREATE TABLE transactions (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    amount DECIMAL(10, 2) NOT NULL,
+    description VARCHAR(255),
+    transaction_date DATETIME NOT NULL,
+    type ENUM('INCOME', 'EXPENSE') NOT NULL,
+    category_id BIGINT,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" href="/userstyles.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>User List</h1>
+    </header>
+
+    <section class="user-list-section">
+        <table class="user-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}">1</td>
+                <td th:text="${user.username}">Sample User</td>
+                <td th:text="${user.email}">user@example.com</td>
+                <td>
+                    <form action="#" method="post" th:action="@{/users/{id}(id=${user.id})}">
+                        <button type="submit" class="btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="link">
+            <a href="/users/add" class="btn-secondary">Add New User</a>
+            <a href="/users/login" class="btn-secondary">Go to Login</a>
+        </div>
+    </section>
+</div>
+</body>
+</html>
