@@ -50,7 +50,7 @@ The application uses three core entities:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/personal-finance-tracker.git
+   git clone https://github.com/emithjayasuriya020/personal-finance-tracker.git
    cd personal-finance-tracker
    ```
 
